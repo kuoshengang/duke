@@ -35,7 +35,7 @@ public class Deadline extends Todo {
     }
 
 
-    public void setTargetDate(Date dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -47,49 +47,32 @@ public class Deadline extends Todo {
         return false;
     }
 
-    public Date getTargetDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void printDetails(){
-        System.out.print("\t\t\tDeadline : " +
-                TASK_DATE.format(this.targetDate));
-        if(this.timesExtended > 0){
-            System.out.println("(" + this.timesExtended +
-                    " extensions)");
-            System.out.print("(" + this.timesExtended +
-                    " extensions)\n");
-        } else {
-            System.out.println("");
-            System.out.print("\n");
-        }
+    public void printList(){
+        System.out.print(this.getTaskIcon());
+        System.out.print(this.getStatusIcon() + " ");
+        System.out.println(String.format("%1$-30s%2$29s",
+                this.getDescription(), "Added: " +
+                        taskDate.format(this.getAddDate())));
+        System.out.println("\t\t\tDeadline : " +
+                taskDate.format(this.getDueDate()));
         if (this.isDone) {
             System.out.println("\t\t\tDone     : " +
-            @@ -97,7 +97,7 @@ public String getSaveText() {
-                this.description.toString() + "/" +
-                        INPUT_DATE.format(this.addDate) + "/" +
-                        this.isDone + "/" +
-                        this.targetDate + "/" +
-                        INPUT_DATE.format(this.targetDate) + "/" +
-                        this.doneAhead;
-
-                if(isDone) {
-                    text = text + "/" + INPUT_DATE.format(this.doneDate) + "\n";
-                } else {
-                    text = text + "\n";
-                }
-                return text;
-            }
-
-            public String getTaskIcon() {
-
-                return("[D]");
-            }
-
-            public String getObjectClass() {
-                return "Deadline";
-            }
-
+                    taskDate.format(this.getDoneDate()) + " " +
+                    this.getDoneAhead());
         }
     }
+
+    public String getTaskIcon() {
+
+        return("[D]");
+    }
+
+    public String getObjectClass() {
+        return "Deadline";
+    }
+
 }

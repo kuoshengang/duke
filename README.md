@@ -1,3 +1,5 @@
+Author: Kuo Sheng Clement ANG
+
 # Duke project template
 
 This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
@@ -23,4 +25,9 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    | | | | | | | |/ / _ \
    | |_| | |_| |   <  __/
    |____/ \__,_|_|\_\___|
+   
    ```
+   
+ ## Setting up Duke Application Tutorial Guide
+ 
+ Author: Kuo Sheng Clement ANG
