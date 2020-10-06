@@ -14,7 +14,7 @@ public class Todo extends Task {
     public void printList () {
 
         System.out.print(this.getStatusIcon() + " ");
-        System.out.println(String.format("%1$-30s%2$29s",
+        System.out.println(String.format("%s",
                 this.getDescription(), "Added: " +
                         taskDate.format(this.getAddDate())));
         System.out.print(this.getTaskIcon());
