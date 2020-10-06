@@ -35,15 +35,7 @@ public class Todo extends Task {
             this.doneDate = doneDate;
         }
 
-        @Override
-        public String getDoneAhead () {
-            return null;
-        }
 
-        @Override
-        public long getDurationMinutes () {
-            return 0;
-        }
 
         @Override
         public Date getEndDate () {
@@ -75,21 +67,14 @@ public class Todo extends Task {
         public Date getEndDate () {
             return null;
         }
-        public Double getItemBudget () {
-            return null;
-        }
-        public Double getItemPrice () {
-            return null;
-        }
+        
         public Date getStartDate () {
             return null;
         }
         public Date getTargetDate () {
             return null;
         }
-        public String getWithinBudget () {
-            return null;
-        }
+
         public void markAsDone (Date doneDate, Double itemPrice){
         }
     }
