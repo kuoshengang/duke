@@ -10,7 +10,6 @@ public class Todo extends Task {
         super(description, Dateadded);
     }
 
-
     public void printList () {
 
         System.out.print(this.getStatusIcon() + " ");
@@ -67,5 +66,4 @@ public class Todo extends Task {
     }
 
 
-    }
 }

@@ -3,7 +3,6 @@ import java.util.Date;
 
 
 
-
 public class Deadline extends Todo {
 
     protected Date dueDate;
@@ -11,9 +10,6 @@ public class Deadline extends Todo {
     protected boolean advance = false;
     protected int timesExtended = 0;
 
-    public Deadline() {
-        super();
-    }
 
     public Deadline(String description, Date dueDate, Date addDate) {
         super(description, addDate);
@@ -22,9 +18,8 @@ public class Deadline extends Todo {
     }
 
     public Deadline(String description, Date addDate, Date doneDate,
-                    boolean isDone, Date dueDate, boolean advance) {
+                    boolean isDone, Date dueDate) {
         super(description, addDate, doneDate, isDone);
-        this.advance = advance;
         this.dueDate = dueDate;
 
     }
