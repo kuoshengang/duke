@@ -4,7 +4,7 @@ import java.util.Date;
 public class Event extends Task {
 
 
-    SimpleDateFormat taskDate = new SimpleDateFormat("dd-MMM-yyyy (E)");
+    SimpleDateFormat taskDate = new SimpleDateFormat("dd-MMM-yyyy (E), HH:mm:ss");
     protected Date startDate;
     protected Date endDate;
     protected long durationMinutes;
@@ -18,81 +18,66 @@ public class Event extends Task {
         this.durationMinutes = (endDate.getTime() - startDate.getTime())/60000;
     }
 
+    public void setEndDate(Date endDate) {
+
+        this.endDate = endDate;
+    }
 
     public void setStartDate(Date startDate) {
 
         this.startDate = startDate;
     }
 
-    public void setEndDate(Date endDate) {
 
-        this.endDate = endDate;
+
+    public void printList(){
+        System.out.print(this.getTaskIcon());
+        System.out.print(this.getStatusIcon() + " ");
+        System.out.println(String.format("%s",
+                this.getDescription() + " (" +
+                        this.getDuration() +
+                        "mins)", "Added: " +
+                        taskDate.format(this.getAddDate())));
+        System.out.println("\t\t\tFrom     : " +
+                taskDate.format(this.getStartDate()));
+        System.out.println("\t\t\tTo       : " +
+                taskDate.format(this.getEndDate()));
+        if (this.isDone) {
+            System.out.println("\t\t\tDone     : " +
+                    taskDate.format(this.getDoneDate()));
+        }
     }
 
-    //GET STATEMENTS------------------------------------
     public Date getStartDate() {
-        public void printList(){
-            System.out.print(this.getTaskIcon());
-            System.out.print(this.getStatusIcon() + " ");
-            System.out.println(String.format("%1$-30s%2$29s",
-                    this.getDescription() + " (" +
-                            this.getDurationMinutes() +
-                            "mins)", "Added: " +
-                            taskDate.format(this.getAddDate())));
-            System.out.println("\t\t\tFrom     : " +
-                    taskDate.format(this.getStartDate()));
-            System.out.println("\t\t\tTo       : " +
-                    taskDate.format(this.getEndDate()));
-            if (this.isDone) {
-                System.out.println("\t\t\tDone     : " +
-                        taskDate.format(this.getDoneDate()));
-            }
-        }
+        return (this.startDate);
+    }
 
-        public Date getStartDate() {
-            return (this.startDate);
-        }
+    public Date getEndDate() {
 
-        public Date getEndDate() {
+        return (this.endDate);
+    }
 
-            return (this.endDate);
-        }
+    public long getDuration() {
 
-        public long getDurationMinutes() {
+        return (this.durationMinutes);
+    }
 
-            return (this.durationMinutes);
-        }
+    public String getTaskIcon() {
 
-        public String getTaskIcon() {
-
-            return("[E]");
-        }
-
-        public String getTaskIcon() { }
-        public String getDoneAhead() {
-            return null;
-        }
-
-        @Override
-        public Double getItemBudget() {
-            return null;
-        }
-
-        @Override
-        public Double getItemPrice() {
-            return null;
-        }
-
-        @Override
-        public Date getTargetDate() {
-            return null;
-        }
-
-        @Override
-        public void markAsDone(Date doneDate, Double itemPrice){
-
-        }
-        public void markAsDone(Date doneDate, Double itemPrice){ }
+        return("[E]");
+    }
 
 
-        }
+//    @Override
+//    public Date getTargetDate() {
+//        return null;
+//    }
+
+//    @Override
+//    public void markAsDone(Date doneDate, Double itemPrice){
+//
+//    }
+//    public void markAsDone(Date doneDate, Double itemPrice){ }
+//
+
+}

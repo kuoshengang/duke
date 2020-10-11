@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Todo extends Task {
 
-    SimpleDateFormat taskDate = new SimpleDateFormat("dd-MMM-yyyy");
+    SimpleDateFormat taskDate = new SimpleDateFormat("dd-MMM-yyyy (E), HH:mm:ss");
 
     public Todo(String description, Date Dateadded) {
 
