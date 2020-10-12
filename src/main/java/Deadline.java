@@ -5,44 +5,43 @@ import java.util.Date;
 
 public class Deadline extends Todo {
 
-    protected Date dueDate;
-    protected Date addDate;
-    protected boolean advance = false;
-    protected int timesExtended = 0;
+    protected String dueDate;
+//    protected boolean advance = false;
+//    protected int timesExtended = 0;
 
 
-    public Deadline(String description, Date dueDate, Date addDate) {
-        super(description, addDate);
-        this.dueDate = dueDate;
-        this addDate = addDate;
-    }
-
-    public Deadline(String description, Date addDate, Date doneDate,
-                    boolean isDone, Date dueDate) {
-        super(description, addDate, doneDate, isDone);
+    public Deadline(String description,  String dueDate) {
+        super(description);
         this.dueDate = dueDate;
 
     }
+
+//    public Deadline(String description, Date addDate, Date doneDate,
+//                    boolean isDone, Date dueDate) {
+//        super(description, addDate, doneDate, isDone);
+//        this.dueDate = dueDate;
+//
+//    }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        return "[D]" + super.toString() + " (by: " + dueDate + ")";
     }
 
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public boolean markAsDone(Date doneDate) throws CommandException {
-        super.markAsDone(doneDate);
-        if(doneDate.compareTo(this.targetDate) < 0) {
-            this.doneAhead = true;
-        }
-        return false;
-    }
+//    public boolean markAsDone(String doneDate) {
+//        super.markAsDone(doneDate);
+//        if(doneDate.compareTo(this.dueDate) < 0) {
+//            this.doneAhead = true;
+//        }
+//        return false;
+//    }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
@@ -56,8 +55,7 @@ public class Deadline extends Todo {
                 taskDate.format(this.getDueDate()));
         if (this.isDone) {
             System.out.println("\t\t\tDone     : " +
-                    taskDate.format(this.getDoneDate()) + " " +
-                    this.getDoneAhead());
+                    this.getDoneDate());
         }
     }
 
@@ -66,8 +64,8 @@ public class Deadline extends Todo {
         return("[D]");
     }
 
-    public String getObjectClass() {
-        return "Deadline";
-    }
+//    public String getObjectClass() {
+//        return "Deadline";
+//    }
 
 }

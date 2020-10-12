@@ -5,9 +5,9 @@ public class Todo extends Task {
 
     SimpleDateFormat taskDate = new SimpleDateFormat("dd-MMM-yyyy (E), HH:mm:ss");
 
-    public Todo(String description, Date Dateadded) {
+    public Todo(String description) {
 
-        super(description, Dateadded);
+        super(description);
     }
 
     public void printList () {
@@ -27,43 +27,41 @@ public class Todo extends Task {
         return ("[T]");
     }
 
-    @Override
+//    @Override
     public void markAsDone (Date doneDate){
 
-        this.isDone = true;
+//        this.isDone = true;
         this.doneDate = doneDate;
     }
 
-
-    @Override
-    public Date getEndDate () {
-        return null;
-    }
-
-    @Override
-    public Date getStartDate () {
-        return null;
-    }
-
-    @Override
-    public Date getTargetDate () {
-        return null;
-    }
-
-    public String getDoneAhead () {
-        return null;
-    }
-
-    public Date getEndDate () {
-        return null;
-    }
-
-    public Date getStartDate () {
-        return null;
-    }
-    public Date getTargetDate () {
-        return null;
-    }
+//
+//    @Override
+//    public Date getEndDate () {
+//        return null;
+//    }
+//
+//    @Override
+//    public Date getStartDate () {
+//        return null;
+//    }
+//
+//    @Override
+//    public Date getTargetDate () {
+//        return null;
+//    }
+//
+//
+//
+//    public Date getEndDate () {
+//        return null;
+//    }
+//
+//    public Date getStartDate () {
+//        return null;
+//    }
+//    public Date getTargetDate () {
+//        return null;
+//    }
 
 
 }

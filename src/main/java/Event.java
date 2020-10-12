@@ -3,6 +3,7 @@ import java.util.Date;
 
 public class Event extends Task {
 
+    protected String at;
 
     SimpleDateFormat taskDate = new SimpleDateFormat("dd-MMM-yyyy (E), HH:mm:ss");
     protected Date startDate;
@@ -10,12 +11,21 @@ public class Event extends Task {
     protected long durationMinutes;
 
 
-    public Event(String description, Date startDate, Date endDate, Date addDate) {
+//    public Event(String description, Date startDate, Date endDate, Date addDate) {
+//
+//        super(description, addDate);
+//        this.startDate = startDate;
+//        this.endDate = endDate;
+//        this.durationMinutes = (endDate.getTime() - startDate.getTime())/60000;
+//    }
 
-        super(description, addDate);
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.durationMinutes = (endDate.getTime() - startDate.getTime())/60000;
+    public Event(String description, String at) {
+        super(description);
+        this.at = at;
+    }
+
+    public String getDescription() {
+        return "[E]" + super.getDescription() + " (at: " + at + ")";
     }
 
     public void setEndDate(Date endDate) {

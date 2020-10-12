@@ -4,28 +4,31 @@ import java.util.Date;
 public class Task {
     protected String description;
     protected Date addDate;
-    protected Date doneDate;
-
+    protected String doneDate;
     protected boolean isDone;
 
-    public Task(String description, Date addDate) {
-        this.addDate = addDate;
+    String TaskDivider = "\t----------------------------------------------------------------------------";
+
+    public Task(String description) {
+//        this.addDate = addDate;
         this.isDone = false;
         this.description = description;
 
     }
 
     public Date getAddDate() {
+
         return (this.addDate);
     }
 
-    public Date getDoneDate() {
+    public String getDoneDate() {
+
         return (this.doneDate);
     }
 
     public String getDescription() {
-        return (this.description.toString());
 
+        return "[" + getStatusIcon() + "]" + this.description;
     }
 
     public String getStatusIcon() {
@@ -36,8 +39,13 @@ public class Task {
         }
     }
 
-    public void markAsDone(Date doneDate) {
+    public void markAsDone() {
         this.isDone = true;
-        this.doneDate = doneDate;
+//        this.doneDate = doneDate;
+        System.out.println("\t____________________________________________________________");
+        System.out.println("\tNice! I've marked this task as done: ");
+        System.out.println("\t" + "[" + "\u2713" + "] " + getDescription() ); //ticked symbols
+        System.out.println("\t" + getDescription() ); //ticked symbols
+        System.out.println("\t____________________________________________________________");
     }
 }
