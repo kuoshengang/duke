@@ -49,7 +49,7 @@ public class Deadline extends Todo {
         System.out.print(this.getTaskIcon());
         System.out.print(this.getStatusIcon() + " ");
         System.out.println(String.format("%s",
-                this.getDescription(), "Added: " +
+                super.getDescription(), "Added: " +
                         taskDate.format(this.getAddDate())));
         System.out.println("\t\t\tDeadline : " +
                 taskDate.format(this.getDueDate()));

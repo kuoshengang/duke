@@ -3,11 +3,13 @@ import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ArrayList;
 
 
 public class Duke {
     static Scanner getInput = new Scanner(System.in);
-    private static Task[] taskList = new Task[100];
+//    private static Task[] taskList = new Task[100];
+    private static ArrayList<Task> taskList = new ArrayList<Task>(100);
     private static int num_of_task = 0;
     private static int taskOutstanding = 0;
     Date now = new Date();
@@ -56,15 +58,68 @@ public class Duke {
 //            }
             else if (input.split(" ")[0].equals("todo")){
                 //do something
-                Date addDate = new Date();
-                setTaskList(new Todo(input.substring(4)));
-                input = getInput.nextLine();
+                try{
+                    if (input.substring(4).equals("")){
+                        throw new DukeException();
+                    }
+                    setTaskList(new Todo(input.substring(5)));
+                    input = getInput.nextLine();
+                } catch (DukeException e){
+                    System.out.println("\t____________________________________________________________");
+                    System.out.println("\t☹ OOPS!!! The description of a todo cannot be empty.");
+                    System.out.println("\t____________________________________________________________");
+                    input = getInput.nextLine();
+                }
             }else if (input.split(" ")[0].equals("deadline")){
 
-                setTaskList(new Deadline( input.substring(8, input.indexOf("by")-2), input.substring(input.indexOf("by")+3) ));
-                input = getInput.nextLine();
+                try {
+                    if (input.substring(8).equals("")) {
+                        throw new DukeException();
+                    }
+                    setTaskList(new Deadline(input.substring(8, input.indexOf("by") - 2), input.substring(input.indexOf("by") + 3)));
+                    input = getInput.nextLine();
+                }catch(DukeException e){
+                    System.out.println("\t____________________________________________________________");
+                    System.out.println("\t☹ OOPS!!! The description of a deadline cannot be empty.");
+                    System.out.println("\t____________________________________________________________");
+                    input = getInput.nextLine();
+                }
             }else if (input.split(" ")[0].equals("event") ){
-                setTaskList(new Event(input.substring(5, input.indexOf("at")-2), input.substring(input.indexOf("at")+3) ));
+                try {
+                    if (input.substring(5).equals("")) {
+                        throw new DukeException();
+                    }
+                    setTaskList(new Event(input.substring(5, input.indexOf("at") - 2), input.substring(input.indexOf("at") + 3)));
+                    input = getInput.nextLine();
+                }catch(DukeException e){
+                    System.out.println("\t____________________________________________________________");
+                    System.out.println("\t☹ OOPS!!! The description of a event cannot be empty.");
+                    System.out.println("\t____________________________________________________________");
+                    input = getInput.nextLine();
+                }
+
+            } else if (input.split(" ")[0].equals("delete")){
+                try{
+                    if (input.substring(7).equals("")){
+                        throw new DukeException();
+                    }
+                    RemoveTask(Integer.parseInt(input.substring(7))-1);
+                    input = getInput.nextLine();
+                }catch(DukeException e){
+                    System.out.println("\t____________________________________________________________");
+                    System.out.println("\t☹ OOPS!!! The description of number cannot be empty.");
+                    System.out.println("\t____________________________________________________________");
+                    input = getInput.nextLine();
+                }catch(NumberFormatException e){
+                    System.out.println("\t____________________________________________________________");
+                    System.out.println("\t☹ OOPS!!! The description of number must be numeric.");
+                    System.out.println("\t____________________________________________________________");
+                    input = getInput.nextLine();
+                }
+            }else{
+                System.out.println("\t____________________________________________________________");
+                System.out.println("\t☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+                System.out.println("\t____________________________________________________________");
                 input = getInput.nextLine();
             }
 
@@ -72,11 +127,11 @@ public class Duke {
 
     }
     public static void setTaskList(Task description){
-        taskList[num_of_task] = description;
+        taskList.add(description);
         System.out.println(dukeDivider);
         System.out.println("\tGot it. I've added this task: ");
 //        System.out.println("\t\t"  taskList[num_of_task].getDescription());
-        System.out.println("\t\t" + taskList[num_of_task].toString());
+        System.out.println("\t\t" + taskList.get(num_of_task).toString());
         num_of_task++;
         System.out.println("\tNow you have " + num_of_task + " tasks in the list.");
         System.out.println(dukeDivider);
@@ -87,9 +142,15 @@ public class Duke {
         System.out.println(dukeDivider);
         System.out.println("\tHere are the tasks in your list: ");
         for (int i = 0; i< num_of_task; i++){
-            System.out.println("\t" + (i+1) + ". ["  +taskList[i].getStatusIcon()+ "]" +taskList[i].toString());
-            System.out.println("\t" + (i+1) + ". " +taskList[i].toString());
+            System.out.println("\t" + (i+1)  + taskList.get(i).toString());
+
         }
+        System.out.println(dukeDivider);
+    }
+
+    public static void RemoveTask(int Task_idx){
+        taskList.remove(Task_idx);
+        System.out.println("\tNow you have " + --num_of_task + " tasks in the list.");
         System.out.println(dukeDivider);
     }
 
