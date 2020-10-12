@@ -28,7 +28,12 @@ public class Task {
 
     public String getDescription() {
 
-        return "[" + getStatusIcon() + "]" + this.description;
+        return this.description;
+    }
+
+    public String toString() {
+
+        return "" + getStatusIcon() + "" + this.description;
     }
 
     public String getStatusIcon() {
@@ -44,8 +49,8 @@ public class Task {
 //        this.doneDate = doneDate;
         System.out.println("\t____________________________________________________________");
         System.out.println("\tNice! I've marked this task as done: ");
-        System.out.println("\t" + "[" + "\u2713" + "] " + getDescription() ); //ticked symbols
-        System.out.println("\t" + getDescription() ); //ticked symbols
+        System.out.println("\t" + getStatusIcon() + this.description ); //ticked symbols
+        System.out.println("\t" + this.description ); //ticked symbols
         System.out.println("\t____________________________________________________________");
     }
 }

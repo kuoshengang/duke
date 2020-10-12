@@ -75,7 +75,8 @@ public class Duke {
         taskList[num_of_task] = description;
         System.out.println(dukeDivider);
         System.out.println("\tGot it. I've added this task: ");
-        System.out.println("\t\t" + taskList[num_of_task].getStatusIcon() + taskList[num_of_task].getDescription());
+//        System.out.println("\t\t"  taskList[num_of_task].getDescription());
+        System.out.println("\t\t" + taskList[num_of_task].toString());
         num_of_task++;
         System.out.println("\tNow you have " + num_of_task + " tasks in the list.");
         System.out.println(dukeDivider);
@@ -86,8 +87,8 @@ public class Duke {
         System.out.println(dukeDivider);
         System.out.println("\tHere are the tasks in your list: ");
         for (int i = 0; i< num_of_task; i++){
-            System.out.println("\t" + (i+1) + ". ["  +taskList[i].getStatusIcon()+ "]" +taskList[i].getDescription());
-            System.out.println("\t" + (i+1) + ". " +taskList[i].getDescription());
+            System.out.println("\t" + (i+1) + ". ["  +taskList[i].getStatusIcon()+ "]" +taskList[i].toString());
+            System.out.println("\t" + (i+1) + ". " +taskList[i].toString());
         }
         System.out.println(dukeDivider);
     }
