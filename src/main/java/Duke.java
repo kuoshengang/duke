@@ -65,9 +65,9 @@ public class Duke {
                     setTaskList(new Todo(input.substring(5)));
                     input = getInput.nextLine();
                 } catch (DukeException e){
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     System.out.println("\t☹ OOPS!!! The description of a todo cannot be empty.");
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     input = getInput.nextLine();
                 }
             }else if (input.split(" ")[0].equals("deadline")){
@@ -79,9 +79,9 @@ public class Duke {
                     setTaskList(new Deadline(input.substring(8, input.indexOf("by") - 2), input.substring(input.indexOf("by") + 3)));
                     input = getInput.nextLine();
                 }catch(DukeException e){
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     System.out.println("\t☹ OOPS!!! The description of a deadline cannot be empty.");
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     input = getInput.nextLine();
                 }
             }else if (input.split(" ")[0].equals("event") ){
@@ -92,9 +92,9 @@ public class Duke {
                     setTaskList(new Event(input.substring(5, input.indexOf("at") - 2), input.substring(input.indexOf("at") + 3)));
                     input = getInput.nextLine();
                 }catch(DukeException e){
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     System.out.println("\t☹ OOPS!!! The description of a event cannot be empty.");
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     input = getInput.nextLine();
                 }
 
@@ -106,20 +106,20 @@ public class Duke {
                     RemoveTask(Integer.parseInt(input.substring(7))-1);
                     input = getInput.nextLine();
                 }catch(DukeException e){
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     System.out.println("\t☹ OOPS!!! The description of number cannot be empty.");
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     input = getInput.nextLine();
                 }catch(NumberFormatException e){
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     System.out.println("\t☹ OOPS!!! The description of number must be numeric.");
-                    System.out.println("\t____________________________________________________________");
+                    System.out.println(dukeDivider);
                     input = getInput.nextLine();
                 }
             }else{
-                System.out.println("\t____________________________________________________________");
+                System.out.println(dukeDivider);
                 System.out.println("\t☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
-                System.out.println("\t____________________________________________________________");
+                System.out.println(dukeDivider);
                 input = getInput.nextLine();
             }
 
