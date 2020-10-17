@@ -3,12 +3,12 @@ import java.util.Date;
 
 public class Event extends Task {
 
-    protected String at;
 
     SimpleDateFormat taskDate = new SimpleDateFormat("dd-MMM-yyyy (E), HH:mm:ss");
     protected Date startDate;
     protected Date endDate;
     protected long durationMinutes;
+    public static String at;
 
 
 //    public Event(String description, Date startDate, Date endDate, Date addDate) {
@@ -24,8 +24,9 @@ public class Event extends Task {
         this.at = at;
     }
 
-    public String getDescription() {
-        return "[E]" + super.getDescription() + " (at: " + at + ")";
+
+    public String toString() {
+        return getTaskIcon() + super.toString() + " (at: " + at + ")";
     }
 
     public void setEndDate(Date endDate) {
@@ -37,8 +38,6 @@ public class Event extends Task {
 
         this.startDate = startDate;
     }
-
-
 
     public void printList(){
         System.out.print(this.getTaskIcon());
@@ -67,27 +66,11 @@ public class Event extends Task {
         return (this.endDate);
     }
 
-    public long getDuration() {
-
-        return (this.durationMinutes);
-    }
-
     public String getTaskIcon() {
 
         return("[E]");
     }
 
 
-//    @Override
-//    public Date getTargetDate() {
-//        return null;
-//    }
-
-//    @Override
-//    public void markAsDone(Date doneDate, Double itemPrice){
-//
-//    }
-//    public void markAsDone(Date doneDate, Double itemPrice){ }
-//
 
 }

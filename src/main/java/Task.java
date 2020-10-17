@@ -2,7 +2,7 @@
 import java.util.Date;
 
 public class Task {
-    protected String description;
+    public String description;
     protected Date addDate;
     protected String doneDate;
     protected boolean isDone;
@@ -47,10 +47,9 @@ public class Task {
     public void markAsDone() {
         this.isDone = true;
 //        this.doneDate = doneDate;
-        System.out.println("\t____________________________________________________________");
+        System.out.println(TaskDivider);
         System.out.println("\tNice! I've marked this task as done: ");
         System.out.println("\t" + getStatusIcon() + this.description ); //ticked symbols
-        System.out.println("\t" + this.description ); //ticked symbols
-        System.out.println("\t____________________________________________________________");
+        System.out.println(TaskDivider);
     }
 }
