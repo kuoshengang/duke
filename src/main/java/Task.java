@@ -1,3 +1,10 @@
+/**
+ * This class to create task object.
+ *
+ * @author ANG KUO SHENG CLEMENT
+ * @version 2020.11.11
+ * @since TaskScheduler lvl1
+ */
 
 import java.util.Date;
 
@@ -10,15 +17,7 @@ public class Task {
     String TaskDivider = "\t----------------------------------------------------------------------------";
 
     public Task(String description) {
-//        this.addDate = addDate;
-        this.isDone = false;
         this.description = description;
-
-    }
-
-    public Date getAddDate() {
-
-        return (this.addDate);
     }
 
     public String getDoneDate() {
@@ -44,9 +43,16 @@ public class Task {
         }
     }
 
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean isDone) {
+        this.isDone = isDone;
+    }
+
     public void markAsDone() {
         this.isDone = true;
-//        this.doneDate = doneDate;
         System.out.println(TaskDivider);
         System.out.println("\tNice! I've marked this task as done: ");
         System.out.println("\t" + getStatusIcon() + this.description ); //ticked symbols

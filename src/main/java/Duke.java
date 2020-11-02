@@ -7,9 +7,15 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.DateTimeException;
 import java.util.*;
 import java.text.DateFormat;
 import java.util.TimeZone;
+import java.util.Calendar;
+
+private Storage storage;
+private TaskList tasks;
+private Ui ui;
 
 
 public class Duke {
@@ -19,9 +25,13 @@ public class Duke {
     private static int num_of_task = 0;
     private static int taskOutstanding = 0;
     protected static int done_item;
-    private static String event_details, calender_phrase;
+    private static String event_details, calender_phrase, valid_date;
     public static String input;
     Date now = new Date();
+
+    private Storage storage;
+//    private TaskList tasks;
+//    private Ui ui;
 
 
     public static String dukeDivider = "\t----------------------------------------------------------------------------";
@@ -124,8 +134,8 @@ public class Duke {
                         }
                     } else if (input.substring(5).contains("at") && event_details.length() >= 3 && input.substring(5).contains(event_details) && isValidFormat(event_details)) {
 
-                                String validDate = StrDateFormat(event_details);
-                                setTaskList(new Event(input.substring(5, input.indexOf("at") - 1), validDate));
+                                valid_date = StrDateFormat(event_details);
+                                setTaskList(new Event(input.substring(5, input.indexOf("at") - 1), valid_date ));
                                 input = getInput.nextLine();
 
 
@@ -242,28 +252,29 @@ public class Duke {
 //             * For example MM-dd-yyyy, MM.dd.yyyy,dd.MM.yyyy etc.*/
 //            SimpleDateFormat sdfrmt = new SimpleDateFormat("dd/MM/yyyy");
 
-//                DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//                String formattedDate = formatter.format(dateStr);
-//                return formattedDate;
+//        DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        String formattedDate = formatter.format(dateStr);
+//        return formattedDate;
 
-//                LocalDate date = LocalDate.now();
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-M-yyyy");
-//                  DateTimeFormatter formatter = DateTimeFormatter.forPattern("yyyy/mm/dd HH:mm:ss");
-//                  DateTime dateTime = DateTime.parse(dateStr, formatter);
-        String formatted_date=null;
+//        DateTimeFormatter formatter = DateTimeFormatter.forPattern("yyyy/mm/dd HH:mm:ss");
+//        DateTime dateTime = DateTime.parse(dateStr, formatter);
+//        LocalDate formatted_date=null;
+//        String format_Str=null;
 
-        try {
-            DateFormat shortdate = new SimpleDateFormat("yyyy/MM/dd");
-            shortdate.setLenient(false);
-//            formatted_date = formatter.parse(dateStr);
-            formatted_date = shortdate.format(new Date()).toString();
+        try{
 
-        } catch (DateTimeParseException e) {
-            System.out.println("Invalid date format, pls try again.");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+            formatted_date  = LocalDate.parse(dateStr, formatter);
+            format_Str = formatted_date.toString();
+
+        } catch (DateTimeException e) {
+            System.out.println("Invalid caldender date, pls try again.");
             input = getInput.nextLine();
         }
-        return formatted_date;
+
+            return format_Str;
 
     }
 
@@ -280,13 +291,13 @@ public class Duke {
             try
             {
                  dateFormatter.parse(dateStr);
-//                Date javaDate = sdfrmt.parse(strDate);
-//                System.out.println(strDate+" is valid date format");
+
             }
             /* Date format is invalid */
             catch (DateTimeParseException e)
             {
                 System.out.println(dateStr+" is Invalid Date format (ie: yyyy/MM/dd)");
+                input = getInput.nextLine();
                 return false;
 
             }

@@ -1,5 +1,14 @@
+/**
+ * This class to create Event object.
+ *
+ * @author ANG KUO SHENG CLEMENT
+ * @version 2020.11.11
+ * @since TaskScheduler lvl1
+ */
+package main.java;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class Event extends Task {
 
@@ -43,10 +52,7 @@ public class Event extends Task {
         System.out.print(this.getTaskIcon());
         System.out.print(this.getStatusIcon() + " ");
         System.out.println(String.format("%s",
-                this.getDescription() + " (" +
-                        this.getDuration() +
-                        "mins)", "Added: " +
-                        taskDate.format(this.getAddDate())));
+                this.getDescription() + this.at));
         System.out.println("\t\t\tFrom     : " +
                 taskDate.format(this.getStartDate()));
         System.out.println("\t\t\tTo       : " +

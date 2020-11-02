@@ -1,9 +1,17 @@
+/**
+ * This class to create Todo object.
+ *
+ * @author ANG KUO SHENG CLEMENT
+ * @version 2020.11.11
+ * @since TaskScheduler lvl1
+ */
+
+package main.java;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Todo extends Task {
-
-    SimpleDateFormat taskDate = new SimpleDateFormat("dd-MMM-yyyy (E), HH:mm:ss");
 
     public Todo(String description) {
 
@@ -30,41 +38,6 @@ public class Todo extends Task {
         return ("[T]");
     }
 
-//    @Override
-//    public void markAsDone (Date doneDate){
-//
-//        this.isDone = true;
-//        this.doneDate = doneDate;
-//    }
-
-//
-//    @Override
-//    public Date getEndDate () {
-//        return null;
-//    }
-//
-//    @Override
-//    public Date getStartDate () {
-//        return null;
-//    }
-//
-//    @Override
-//    public Date getTargetDate () {
-//        return null;
-//    }
-//
-//
-//
-//    public Date getEndDate () {
-//        return null;
-//    }
-//
-//    public Date getStartDate () {
-//        return null;
-//    }
-//    public Date getTargetDate () {
-//        return null;
-//    }
 
 
 }

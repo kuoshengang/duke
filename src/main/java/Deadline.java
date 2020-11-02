@@ -1,14 +1,18 @@
+/**
+ * This class to create Deadline object.
+ *
+ * @author ANG KUO SHENG CLEMENT
+ * @version 2020.11.11
+ * @since TaskScheduler lvl1
+ */
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
+package main.java;
 
 public class Deadline extends Todo {
 
     protected String dueDate;
-//    protected boolean advance = false;
-//    protected int timesExtended = 0;
-
 
     public Deadline(String description,  String dueDate) {
         super(description);
@@ -16,12 +20,6 @@ public class Deadline extends Todo {
 
     }
 
-//    public Deadline(String description, Date addDate, Date doneDate,
-//                    boolean isDone, Date dueDate) {
-//        super(description, addDate, doneDate, isDone);
-//        this.dueDate = dueDate;
-//
-//    }
 
     @Override
     public String toString() {
@@ -33,39 +31,16 @@ public class Deadline extends Todo {
         this.dueDate = dueDate;
     }
 
-//    public boolean markAsDone(String doneDate) {
-//        super.markAsDone(doneDate);
-//        if(doneDate.compareTo(this.dueDate) < 0) {
-//            this.doneAhead = true;
-//        }
-//        return false;
-//    }
 
     public String getDueDate() {
         return dueDate;
     }
 
-    public void printList(){
-        System.out.print(this.getTaskIcon());
-        System.out.print(this.getStatusIcon() + " ");
-        System.out.println(String.format("%s",
-                super.getDescription(), "Added: " +
-                        taskDate.format(this.getAddDate())));
-        System.out.println("\t\t\tDeadline : " +
-                taskDate.format(this.getDueDate()));
-        if (this.isDone) {
-            System.out.println("\t\t\tDone     : " +
-                    this.getDoneDate());
-        }
-    }
 
     public String getTaskIcon() {
 
         return("[D]");
     }
 
-//    public String getObjectClass() {
-//        return "Deadline";
-//    }
 
 }
